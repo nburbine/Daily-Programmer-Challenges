@@ -7,10 +7,10 @@ class Driver:
         self.route = route
         self.stop_number = 0
         self.stop = self.route[self.stop_number]
-        self.gossips = [initial_gossip]
+        self.gossips = {initial_gossip}
 
     def gossip(self, new_gossips):
-        self.gossips.extend(new_gossips)
+        self.gossips.update(new_gossips)
 
     def next_stop(self):
         self.stop_number = (self.stop_number+1)%len(self.route)
