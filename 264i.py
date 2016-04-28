@@ -1,3 +1,7 @@
+# Nathaniel Burbine
+# Daily Programmer Challenge 264 [Intermediate]
+# https://www.reddit.com/r/dailyprogrammer/comments/4gqm90/20160427_challenge_264_intermediate_gossiping_bus/
+
 class Driver:
     def __init__(self, route, initial_gossip):
         #print(route, initial_gossip)
