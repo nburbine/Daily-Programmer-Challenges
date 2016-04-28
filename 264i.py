@@ -4,12 +4,10 @@
 
 class Driver:
     def __init__(self, route, initial_gossip):
-        #print(route, initial_gossip)
         self.route = route
         self.stop_number = 0
         self.stop = self.route[self.stop_number]
         self.gossips = [initial_gossip]
-        self.name = initial_gossip
 
     def gossip(self, new_gossips):
         self.gossips.extend(new_gossips)
@@ -30,7 +28,6 @@ def simulate(routes):
     day = range(0, 480)
     # stop number -> gossips
     stations = dict()
-    possible = False
     for minute in day:
         # Get each station's gossip
         for driver in drivers:
@@ -45,19 +42,14 @@ def simulate(routes):
             driver.next_stop()
 
         # Check if all drivers have all gossip
-        all_gossip = True
-        for driver in drivers:
-            if len(driver.gossips) != gossip:
-                all_gossip = False
-                break
-
-        if all_gossip:
+        if all([len(driver.gossips) == gossip for driver in drivers]):
             return minute
 
+        # Reset for the next minute
         stations.clear()
 
-    if not possible:
-        return 'never'
+    # Not possible
+    return 'never'
 
 
 if __name__ == "__main__":
@@ -95,6 +87,7 @@ if __name__ == "__main__":
     inputs = [example1,example2,challenge1,challenge2]
     results = []
     for routes in inputs:
+        # Convert string representation to list-of-lists
         routes = routes.split('        ')
         routes.pop(0)
         for route in routes:
