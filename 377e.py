@@ -1,4 +1,4 @@
-# reddit.com/r/dailyprogrammer/comments/bazy5j/20190408_challenge_377_easy_axisaligned_crate/
+# reddit.com/r/dailyprogrammer/comments/bazy5j/
 
 import itertools
 
